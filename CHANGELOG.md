@@ -11,3 +11,5 @@ adheres to [Semantic Versioning](https://semver.org/).
 - MCP adapter scaffold in the server
 
 ### Changed
+- Hybrid retrieval scoring tuned (0.65 keyword / 0.35 vector)
+
