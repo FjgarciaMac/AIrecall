@@ -8,3 +8,6 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 - Go memory server (`airecalld`) with JSON API
+- MCP adapter scaffold in the server
+
+### Changed
