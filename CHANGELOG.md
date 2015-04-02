@@ -13,3 +13,6 @@ adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 - Hybrid retrieval scoring tuned (0.65 keyword / 0.35 vector)
 
+## [0.3.0] - 2025-11-14
+
+### Added
