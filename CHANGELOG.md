@@ -16,3 +16,6 @@ adheres to [Semantic Versioning](https://semver.org/).
 ## [0.3.0] - 2025-11-14
 
 ### Added
+- Summarization pass with fact promotion
+- `airecall summarize` CLI command
+
