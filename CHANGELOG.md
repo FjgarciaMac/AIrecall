@@ -5,3 +5,6 @@ All notable changes to AIrecall are documented here. The format is based on
 adheres to [Semantic Versioning](https://semver.org/).
 
 ## [0.4.0] - 2026-03-02
+
+### Added
+- Go memory server (`airecalld`) with JSON API
