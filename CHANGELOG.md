@@ -30,3 +30,6 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 - Episodic memory store (SQLite)
+- Hybrid retrieval (keyword + vector)
+- Python SDK with `Memory` class
+- `airecall init | store | recall` CLI
