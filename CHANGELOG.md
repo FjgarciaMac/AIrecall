@@ -33,3 +33,6 @@ adheres to [Semantic Versioning](https://semver.org/).
 - Hybrid retrieval (keyword + vector)
 - Python SDK with `Memory` class
 - `airecall init | store | recall` CLI
+
+## [0.0.2] - 2024-07-25
+
