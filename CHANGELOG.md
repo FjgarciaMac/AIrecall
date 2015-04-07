@@ -28,3 +28,5 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [0.1.0] - 2024-11-18
 
+### Added
+- Episodic memory store (SQLite)
