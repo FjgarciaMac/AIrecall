@@ -22,3 +22,6 @@ adheres to [Semantic Versioning](https://semver.org/).
 ## [0.2.0] - 2025-06-09
 
 ### Added
+- Semantic facts API (`remember_fact` / `recall_fact`)
+- LangChain `MemoryRetriever` adapter
+- `airecall fact` CLI command
