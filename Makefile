@@ -4,3 +4,4 @@ build:
 	cd server && go build -o ../bin/airecalld ./cmd/airecalld
 
 test: python-test server-test
+
