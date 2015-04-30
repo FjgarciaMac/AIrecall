@@ -5,3 +5,4 @@ build:
 
 test: python-test server-test
 
+python-test:
