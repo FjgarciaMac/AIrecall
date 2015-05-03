@@ -7,3 +7,4 @@ test: python-test server-test
 
 python-test:
 	cd sdk-python && pip install -e ".[dev]" && pytest
+
