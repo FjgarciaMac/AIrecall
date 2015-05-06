@@ -9,3 +9,4 @@ python-test:
 	cd sdk-python && pip install -e ".[dev]" && pytest
 
 server-test:
+	cd server && go test ./... -race -count=1
