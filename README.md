@@ -9,3 +9,9 @@ pip install airecall-sdk
 airecall init
 ```
 
+| | |
+|---|---|
+| Languages | Python SDK + Go memory server |
+| Storage | SQLite + in-process vector index |
+| License | MIT |
+| Dependencies | SDK stdlib-only · server one pure-Go dep |
