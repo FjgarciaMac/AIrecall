@@ -15,3 +15,10 @@ airecall init
 | Storage | SQLite + in-process vector index |
 | License | MIT |
 | Dependencies | SDK stdlib-only · server one pure-Go dep |
+
+---
+
+## Why This Exists
+
+Most agent frameworks give you a context window, not a memory. Close the
+session and everything the agent learned — user preferences, past
