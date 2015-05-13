@@ -34,3 +34,9 @@ actual memory:
 | 🧠 **Episodic memory** | What happened, in order (conversations, actions, outcomes) |
 | 📌 **Semantic memory** | Durable facts and preferences distilled out of those episodes |
 | 🔎 **Hybrid retrieval** | Keyword + vector search pulls back what matters for *this* turn |
+| 🗜️ **Auto-summarization** | Old episodes are compressed, not deleted — long-term memory stays cheap |
+
+The goal is a memory layer that's boring to integrate and hard to notice —
+until you turn it off and the agent forgets your name.
+
+---
