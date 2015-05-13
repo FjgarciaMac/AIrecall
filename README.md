@@ -22,3 +22,9 @@ airecall init
 
 Most agent frameworks give you a context window, not a memory. Close the
 session and everything the agent learned — user preferences, past
+decisions, corrections it was given — is gone. Stuff it all into the
+prompt instead, and you're paying for and diluting your context with old
+information, most of which is irrelevant to the current turn.
+
+AIrecall sits between your agent and a persistent store, and gives it an
+actual memory:
