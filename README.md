@@ -28,3 +28,9 @@ information, most of which is irrelevant to the current turn.
 
 AIrecall sits between your agent and a persistent store, and gives it an
 actual memory:
+
+| | | |
+|---|---|---|
+| 🧠 **Episodic memory** | What happened, in order (conversations, actions, outcomes) |
+| 📌 **Semantic memory** | Durable facts and preferences distilled out of those episodes |
+| 🔎 **Hybrid retrieval** | Keyword + vector search pulls back what matters for *this* turn |
