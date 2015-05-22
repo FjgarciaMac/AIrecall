@@ -52,3 +52,9 @@ until you turn it off and the agent forgets your name.
                                                                  +-----------v----------+
                                                                  |    Storage Engine      |
                                                                  |  SQLite + vector idx   |
+                                                                 +-----------+----------+
+                                                                             |
+                                                                 +-----------v----------+
+                                                                 |   Optional MCP         |
+                                                                 |   adapter              |
+                                                                 +-----------------------+
