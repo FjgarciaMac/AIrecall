@@ -40,3 +40,9 @@ The goal is a memory layer that's boring to integrate and hard to notice —
 until you turn it off and the agent forgets your name.
 
 ---
+
+## How It Works
+
+```
+        +---------------------+        local call / gRPC        +----------------------+
+        |      Agent code      | -------------------------------> |     AIrecall Core     |
