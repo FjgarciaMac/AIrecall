@@ -46,3 +46,9 @@ until you turn it off and the agent forgets your name.
 ```
         +---------------------+        local call / gRPC        +----------------------+
         |      Agent code      | -------------------------------> |     AIrecall Core     |
+        |    (Python SDK)      | <------------------------------- |   (memory server)     |
+        +---------------------+                                  +-----------+----------+
+                                                                             |
+                                                                 +-----------v----------+
+                                                                 |    Storage Engine      |
+                                                                 |  SQLite + vector idx   |
