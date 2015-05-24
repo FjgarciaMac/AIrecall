@@ -58,3 +58,9 @@ until you turn it off and the agent forgets your name.
                                                                  |   Optional MCP         |
                                                                  |   adapter              |
                                                                  +-----------------------+
+```
+
+On every turn, the SDK sends the current query to the core, which does a
+**hybrid retrieval** pass — keyword + vector similarity — over both
+episodic and semantic memory, and returns the top-k relevant memories to
+inject into your prompt. In the background, a summarizer periodically
