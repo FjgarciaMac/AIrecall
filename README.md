@@ -83,3 +83,9 @@ airecall serve
 
 `airecall init` scaffolds a local SQLite-backed store so you can start
 storing and recalling memories immediately, no separate service required.
+
+---
+
+## Quickstart
+
+```python
