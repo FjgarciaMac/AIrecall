@@ -64,3 +64,9 @@ On every turn, the SDK sends the current query to the core, which does a
 **hybrid retrieval** pass — keyword + vector similarity — over both
 episodic and semantic memory, and returns the top-k relevant memories to
 inject into your prompt. In the background, a summarizer periodically
+walks older episodes, extracts durable facts into semantic memory, and
+compacts the rest.
+
+---
+
+## Install
