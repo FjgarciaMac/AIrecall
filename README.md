@@ -76,3 +76,10 @@ compacts the rest.
 pip install airecall-sdk
 
 # Core memory server - runs locally or as a sidecar
+pip install airecall-sdk[server]
+# or run it standalone:
+airecall serve
+```
+
+`airecall init` scaffolds a local SQLite-backed store so you can start
+storing and recalling memories immediately, no separate service required.
