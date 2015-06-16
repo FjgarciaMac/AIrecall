@@ -89,3 +89,9 @@ storing and recalling memories immediately, no separate service required.
 ## Quickstart
 
 ```python
+from airecall import Memory
+
+memory = Memory(agent_id="support-bot")
+
+# Store an episode
+memory.remember(
