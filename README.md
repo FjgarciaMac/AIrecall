@@ -70,3 +70,9 @@ compacts the rest.
 ---
 
 ## Install
+
+```bash
+# Python SDK - what your agent code imports
+pip install airecall-sdk
+
+# Core memory server - runs locally or as a sidecar
