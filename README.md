@@ -95,3 +95,9 @@ memory = Memory(agent_id="support-bot")
 
 # Store an episode
 memory.remember(
+    "User asked about refund policy for order ORD-9921, told 30-day window applies."
+)
+
+# Later, in a new session
+context = memory.recall("what did we tell this user about refunds?")
+# -> returns the relevant episodic memory, ranked by relevance
