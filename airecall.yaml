@@ -3,3 +3,4 @@ storage:
   path: "./airecall.db"
 
 retrieval:
+  top_k: 5
