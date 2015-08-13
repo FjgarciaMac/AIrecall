@@ -6,3 +6,4 @@ retrieval:
   top_k: 5
   mode: hybrid          # keyword | vector | hybrid
 
+summarization:
