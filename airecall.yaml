@@ -7,3 +7,4 @@ retrieval:
   mode: hybrid          # keyword | vector | hybrid
 
 summarization:
+  enabled: true
