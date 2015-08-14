@@ -36,3 +36,12 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [0.0.2] - 2024-07-25
 
+### Added
+- Schema draft for episodes and facts tables
+
+## [0.0.1] - 2024-03-12
+
+### Added
+- Project scaffold and design notes
+
+<!-- draft note 1 -->
