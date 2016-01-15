@@ -9,3 +9,9 @@ import (
 )
 
 // Store wraps the sqlite connection.
+type Store struct {
+	DB *sql.DB
+}
+
+// Open opens (and migrates) the store.
+func Open(path string) (*Store, error) {
