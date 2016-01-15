@@ -22,3 +22,9 @@ func Open(path string) (*Store, error) {
 	if _, err := db.Exec(`
 		CREATE TABLE IF NOT EXISTS episodes (
 			id         INTEGER PRIMARY KEY AUTOINCREMENT,
+			agent_id   TEXT NOT NULL,
+			content    TEXT NOT NULL,
+			kind       TEXT NOT NULL DEFAULT 'episode',
+			created_at TEXT NOT NULL
+		);
+		CREATE TABLE IF NOT EXISTS facts (
