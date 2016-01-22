@@ -34,3 +34,9 @@ func Open(path string) (*Store, error) {
 			value      TEXT NOT NULL,
 			updated_at TEXT NOT NULL,
 			UNIQUE(agent_id, key)
+		);
+		CREATE INDEX IF NOT EXISTS idx_episodes_agent
+			ON episodes(agent_id, created_at);
+	`); err != nil {
+		db.Close()
+		return nil, err
