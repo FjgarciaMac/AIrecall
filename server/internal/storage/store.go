@@ -28,3 +28,9 @@ func Open(path string) (*Store, error) {
 			created_at TEXT NOT NULL
 		);
 		CREATE TABLE IF NOT EXISTS facts (
+			id         INTEGER PRIMARY KEY AUTOINCREMENT,
+			agent_id   TEXT NOT NULL,
+			key        TEXT NOT NULL,
+			value      TEXT NOT NULL,
+			updated_at TEXT NOT NULL,
+			UNIQUE(agent_id, key)
