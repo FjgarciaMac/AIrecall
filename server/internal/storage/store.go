@@ -40,3 +40,10 @@ func Open(path string) (*Store, error) {
 	`); err != nil {
 		db.Close()
 		return nil, err
+	}
+	return &Store{DB: db}, nil
+}
+
+// Close releases the connection.
+func (s *Store) Close() error { return s.DB.Close() }
+
