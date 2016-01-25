@@ -47,3 +47,9 @@ func Open(path string) (*Store, error) {
 // Close releases the connection.
 func (s *Store) Close() error { return s.DB.Close() }
 
+// AddEpisode stores one episodic memory.
+func (s *Store) AddEpisode(agentID, content string) error {
+	_, err := s.DB.Exec(
+		"INSERT INTO episodes (agent_id, content, created_at) VALUES (?, ?, ?)",
+		agentID, content, time.Now().UTC().Format(time.RFC3339))
+	return err
