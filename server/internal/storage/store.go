@@ -59,3 +59,10 @@ func (s *Store) AddEpisode(agentID, content string) error {
 func (s *Store) UpsertFact(agentID, key, value string) error {
 	_, err := s.DB.Exec(`
 		INSERT INTO facts (agent_id, key, value, updated_at) VALUES (?, ?, ?, ?)
+		ON CONFLICT(agent_id, key) DO UPDATE SET value=excluded.value,
+			updated_at=excluded.updated_at`,
+		agentID, key, value, time.Now().UTC().Format(time.RFC3339))
+	return err
+}
+
+// Fact returns a semantic fact by key.
