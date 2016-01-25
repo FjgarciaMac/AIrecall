@@ -53,3 +53,9 @@ func (s *Store) AddEpisode(agentID, content string) error {
 		"INSERT INTO episodes (agent_id, content, created_at) VALUES (?, ?, ?)",
 		agentID, content, time.Now().UTC().Format(time.RFC3339))
 	return err
+}
+
+// UpsertFact stores or updates a semantic fact.
+func (s *Store) UpsertFact(agentID, key, value string) error {
+	_, err := s.DB.Exec(`
+		INSERT INTO facts (agent_id, key, value, updated_at) VALUES (?, ?, ?, ?)
