@@ -66,3 +66,9 @@ func (s *Store) UpsertFact(agentID, key, value string) error {
 }
 
 // Fact returns a semantic fact by key.
+func (s *Store) Fact(agentID, key string) (string, bool, error) {
+	var value string
+	err := s.DB.QueryRow(
+		"SELECT value FROM facts WHERE agent_id = ? AND key = ?",
+		agentID, key).Scan(&value)
+	if err == sql.ErrNoRows {
