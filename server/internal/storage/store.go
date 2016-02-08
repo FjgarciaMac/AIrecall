@@ -72,3 +72,9 @@ func (s *Store) Fact(agentID, key string) (string, bool, error) {
 		"SELECT value FROM facts WHERE agent_id = ? AND key = ?",
 		agentID, key).Scan(&value)
 	if err == sql.ErrNoRows {
+		return "", false, nil
+	}
+	if err != nil {
+		return "", false, err
+	}
+	return value, true, nil
