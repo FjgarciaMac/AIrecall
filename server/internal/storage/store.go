@@ -84,3 +84,10 @@ func (s *Store) Fact(agentID, key string) (string, bool, error) {
 type Episode struct {
 	ID      int64
 	Content string
+}
+
+// RecentEpisodes returns the newest episodes for one agent, newest first.
+func (s *Store) RecentEpisodes(agentID string, limit int) ([]Episode, error) {
+	rows, err := s.DB.Query(
+		`SELECT id, content FROM episodes WHERE agent_id = ?
+		 ORDER BY created_at DESC, id DESC LIMIT ?`, agentID, limit)
