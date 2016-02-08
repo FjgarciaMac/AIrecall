@@ -91,3 +91,9 @@ func (s *Store) RecentEpisodes(agentID string, limit int) ([]Episode, error) {
 	rows, err := s.DB.Query(
 		`SELECT id, content FROM episodes WHERE agent_id = ?
 		 ORDER BY created_at DESC, id DESC LIMIT ?`, agentID, limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var out []Episode
+	for rows.Next() {
