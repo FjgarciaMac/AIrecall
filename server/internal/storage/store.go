@@ -78,3 +78,9 @@ func (s *Store) Fact(agentID, key string) (string, bool, error) {
 		return "", false, err
 	}
 	return value, true, nil
+}
+
+// Episode is one episodic memory row as returned by RecentEpisodes.
+type Episode struct {
+	ID      int64
+	Content string
