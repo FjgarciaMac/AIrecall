@@ -10,3 +10,6 @@ func TestRoundTrip(t *testing.T) {
 	_ = os.Remove(path)
 	store, err := Open(path)
 	if err != nil {
+		t.Fatal(err)
+	}
+	defer store.Close()
