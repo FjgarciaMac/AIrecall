@@ -20,3 +20,6 @@ func TestRoundTrip(t *testing.T) {
 	eps, err := store.RecentEpisodes("a", 10)
 	if err != nil || len(eps) != 1 || eps[0].Content != "episode one" {
 		t.Fatalf("episodes = %v err=%v", eps, err)
+	}
+
+	if err := store.UpsertFact("a", "prefers", "email"); err != nil {
