@@ -27,3 +27,6 @@ func TestRoundTrip(t *testing.T) {
 	}
 	if err := store.UpsertFact("a", "prefers", "phone"); err != nil {
 		t.Fatal(err)
+	}
+	value, ok, err := store.Fact("a", "prefers")
+	if err != nil || !ok || value != "phone" {
