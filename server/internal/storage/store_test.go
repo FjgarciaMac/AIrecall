@@ -37,3 +37,6 @@ func TestRoundTrip(t *testing.T) {
 	if err != nil || n != 1 {
 		t.Fatalf("count = %d err=%v", n, err)
 	}
+	_ = os.Remove(path)
+}
+
