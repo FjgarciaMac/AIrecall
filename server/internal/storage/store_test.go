@@ -30,3 +30,6 @@ func TestRoundTrip(t *testing.T) {
 	}
 	value, ok, err := store.Fact("a", "prefers")
 	if err != nil || !ok || value != "phone" {
+		t.Fatalf("fact = %q ok=%v err=%v", value, ok, err)
+	}
+
