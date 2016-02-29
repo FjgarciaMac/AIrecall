@@ -33,3 +33,7 @@ func TestRoundTrip(t *testing.T) {
 		t.Fatalf("fact = %q ok=%v err=%v", value, ok, err)
 	}
 
+	n, err := store.CountEpisodes("a")
+	if err != nil || n != 1 {
+		t.Fatalf("count = %d err=%v", n, err)
+	}
