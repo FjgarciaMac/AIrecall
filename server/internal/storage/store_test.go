@@ -40,3 +40,6 @@ func TestRoundTrip(t *testing.T) {
 	_ = os.Remove(path)
 }
 
+func TestAgentsIsolated(t *testing.T) {
+	path := os.TempDir() + "/airecall_store_iso.db"
+	_ = os.Remove(path)
