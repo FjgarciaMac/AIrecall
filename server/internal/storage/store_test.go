@@ -43,3 +43,7 @@ func TestRoundTrip(t *testing.T) {
 func TestAgentsIsolated(t *testing.T) {
 	path := os.TempDir() + "/airecall_store_iso.db"
 	_ = os.Remove(path)
+	store, err := Open(path)
+	if err != nil {
+		t.Fatal(err)
+	}
