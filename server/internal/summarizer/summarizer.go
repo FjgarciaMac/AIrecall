@@ -10,3 +10,9 @@ import (
 
 // Extractor finds "key: value" style facts in episode text.
 var factPattern = regexp.MustCompile(
+	`(?i)\b(?:prefers|preferred|likes|wants|uses|contact|timezone|language|name|email|phone)\b[^,.;\n]{0,60}`)
+
+// Summarizer runs the compaction pass.
+type Summarizer struct {
+	store *storage.Store
+}
