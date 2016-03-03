@@ -16,3 +16,9 @@ var factPattern = regexp.MustCompile(
 type Summarizer struct {
 	store *storage.Store
 }
+
+// New creates a summarizer bound to the store.
+func New(store *storage.Store) *Summarizer { return &Summarizer{store: store} }
+
+// Result reports what one Run pass promoted.
+type Result struct {
