@@ -22,3 +22,8 @@ func New(store *storage.Store) *Summarizer { return &Summarizer{store: store} }
 
 // Result reports what one Run pass promoted.
 type Result struct {
+	Scanned       int `json:"scanned"`
+	FactsPromoted int `json:"facts_promoted"`
+}
+
+// Run walks the newest episodes and promotes detectable facts into the
