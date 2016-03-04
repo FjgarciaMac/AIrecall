@@ -27,3 +27,9 @@ type Result struct {
 }
 
 // Run walks the newest episodes and promotes detectable facts into the
+// facts table. Compaction (deleting superseded episodes) is left to the
+// server operator; this pass only distills.
+func (s *Summarizer) Run(agentID string, limit int) (Result, error) {
+	episodes, err := s.store.RecentEpisodes(agentID, limit)
+	if err != nil {
+		return Result{}, err
