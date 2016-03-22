@@ -33,3 +33,9 @@ func (s *Summarizer) Run(agentID string, limit int) (Result, error) {
 	episodes, err := s.store.RecentEpisodes(agentID, limit)
 	if err != nil {
 		return Result{}, err
+	}
+	result := Result{Scanned: len(episodes)}
+	for _, e := range episodes {
+		kv := splitFact(e.Content)
+		if kv == nil {
+			continue
