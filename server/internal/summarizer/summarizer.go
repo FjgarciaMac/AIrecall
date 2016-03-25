@@ -39,3 +39,9 @@ func (s *Summarizer) Run(agentID string, limit int) (Result, error) {
 		kv := splitFact(e.Content)
 		if kv == nil {
 			continue
+		}
+		if err := s.store.UpsertFact(agentID, kv[0], kv[1]); err != nil {
+			return Result{}, err
+		}
+		result.FactsPromoted++
+	}
