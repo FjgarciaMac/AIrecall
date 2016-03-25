@@ -45,3 +45,8 @@ func (s *Summarizer) Run(agentID string, limit int) (Result, error) {
 		}
 		result.FactsPromoted++
 	}
+	return result, nil
+}
+
+// splitFact extracts a key/value pair from one episode line, or nil when
+// the line carries no recognizable fact trigger. Accepted separators, in
