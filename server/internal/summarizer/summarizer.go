@@ -50,3 +50,9 @@ func (s *Summarizer) Run(agentID string, limit int) (Result, error) {
 
 // splitFact extracts a key/value pair from one episode line, or nil when
 // the line carries no recognizable fact trigger. Accepted separators, in
+// priority order: ":", "=", " is ", and a bare space.
+func splitFact(text string) []string {
+	m := factPattern.FindString(text)
+	if m == "" {
+		return nil
+	}
