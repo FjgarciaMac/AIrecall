@@ -12,3 +12,8 @@ func TestSplitFact(t *testing.T) {
 		"prefers email":        {"prefers", "email"},
 		"contact: email":       {"contact", "email"},
 		"timezone is UTC":      {"timezone", "UTC"},
+		"name = alice":         {"name", "alice"},
+		"a very long key here": nil,
+	}
+	for in, want := range cases {
+		got := splitFact(in)
