@@ -17,3 +17,7 @@ func TestSplitFact(t *testing.T) {
 	}
 	for in, want := range cases {
 		got := splitFact(in)
+		if want == nil {
+			if got != nil {
+				t.Fatalf("%q: expected nil, got %v", in, got)
+			}
