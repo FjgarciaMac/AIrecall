@@ -30,3 +30,8 @@ func TestSplitFact(t *testing.T) {
 }
 
 func TestRunPromotesFacts(t *testing.T) {
+	path := os.TempDir() + "/airecall_summarizer_test.db"
+	_ = os.Remove(path)
+	store, err := storage.Open(path)
+	if err != nil {
+		t.Fatal(err)
