@@ -26,3 +26,7 @@ func TestSplitFact(t *testing.T) {
 		if got == nil || got[0] != want[0] || got[1] != want[1] {
 			t.Fatalf("%q: got %v want %v", in, got, want)
 		}
+	}
+}
+
+func TestRunPromotesFacts(t *testing.T) {
