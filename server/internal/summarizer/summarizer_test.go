@@ -35,3 +35,7 @@ func TestRunPromotesFacts(t *testing.T) {
 	store, err := storage.Open(path)
 	if err != nil {
 		t.Fatal(err)
+	}
+	defer store.Close()
+
+	_ = store.AddEpisode("a", "timezone is UTC")
