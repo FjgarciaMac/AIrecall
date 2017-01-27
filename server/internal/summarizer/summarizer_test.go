@@ -39,3 +39,8 @@ func TestRunPromotesFacts(t *testing.T) {
 	defer store.Close()
 
 	_ = store.AddEpisode("a", "timezone is UTC")
+	_ = store.AddEpisode("a", "no fact in this line at all")
+	res, err := New(store).Run("a", 10)
+	if err != nil {
+		t.Fatal(err)
+	}
