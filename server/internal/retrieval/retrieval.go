@@ -30,3 +30,13 @@ func (s *Scorer) Hybrid(query string, memories []Memory, topK int, mode string) 
 	for _, m := range memories {
 		sc := s.Score(query, m.Content, mode)
 		if sc > 0 {
+			results = append(results, scored{m, sc})
+		}
+	}
+	sort.Slice(results, func(i, j int) bool { return results[i].sc > results[j].sc })
+	if len(results) > topK {
+		results = results[:topK]
+	}
+	out := make([]string, 0, len(results))
+	for _, r := range results {
+		out = append(out, r.m.Content)
