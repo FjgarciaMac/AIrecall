@@ -40,3 +40,13 @@ func (s *Scorer) Hybrid(query string, memories []Memory, topK int, mode string) 
 	out := make([]string, 0, len(results))
 	for _, r := range results {
 		out = append(out, r.m.Content)
+	}
+	return out
+}
+
+// Score combines keyword and vector similarity.
+func (s *Scorer) Score(query, content, mode string) float64 {
+	kw := keywordScore(query, content)
+	vec := cosineSimilarity(query, content)
+	switch mode {
+	case "keyword":
