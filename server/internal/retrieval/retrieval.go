@@ -21,3 +21,12 @@ func NewScorer() *Scorer { return &Scorer{} }
 
 // Hybrid ranks memories by combined keyword + vector score.
 // mode: "keyword" | "vector" | "hybrid"
+func (s *Scorer) Hybrid(query string, memories []Memory, topK int, mode string) []string {
+	type scored struct {
+		m  Memory
+		sc float64
+	}
+	results := make([]scored, 0, len(memories))
+	for _, m := range memories {
+		sc := s.Score(query, m.Content, mode)
+		if sc > 0 {
