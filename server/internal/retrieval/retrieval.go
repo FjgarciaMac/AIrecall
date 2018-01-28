@@ -60,3 +60,13 @@ func (s *Scorer) Score(query, content, mode string) float64 {
 
 func tokens(s string) map[string]int {
 	out := map[string]int{}
+	for _, w := range strings.Fields(strings.ToLower(s)) {
+		if len(w) <= 2 {
+			continue
+		}
+		out[w]++
+	}
+	return out
+}
+
+func keywordScore(query, content string) float64 {
