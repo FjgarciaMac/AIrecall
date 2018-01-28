@@ -50,3 +50,13 @@ func (s *Scorer) Score(query, content, mode string) float64 {
 	vec := cosineSimilarity(query, content)
 	switch mode {
 	case "keyword":
+		return kw
+	case "vector":
+		return vec
+	default:
+		return 0.65*kw + 0.35*vec
+	}
+}
+
+func tokens(s string) map[string]int {
+	out := map[string]int{}
