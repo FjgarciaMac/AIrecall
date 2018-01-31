@@ -70,3 +70,13 @@ func tokens(s string) map[string]int {
 }
 
 func keywordScore(query, content string) float64 {
+	q := tokens(query)
+	if len(q) == 0 {
+		return 0
+	}
+	c := tokens(content)
+	hits := 0
+	for w := range q {
+		if n, ok := c[w]; ok && n > 0 {
+			hits++
+		}
