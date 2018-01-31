@@ -80,3 +80,12 @@ func keywordScore(query, content string) float64 {
 		if n, ok := c[w]; ok && n > 0 {
 			hits++
 		}
+	}
+	return float64(hits) / float64(len(q))
+}
+
+func vector(query, content string) []float64 {
+	vocab := map[string]int{}
+	q := tokens(query)
+	c := tokens(content)
+	for w := range q {
