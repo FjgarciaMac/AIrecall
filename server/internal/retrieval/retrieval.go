@@ -89,3 +89,13 @@ func vector(query, content string) []float64 {
 	q := tokens(query)
 	c := tokens(content)
 	for w := range q {
+		if _, ok := vocab[w]; !ok {
+			vocab[w] = len(vocab)
+		}
+	}
+	for w := range c {
+		if _, ok := vocab[w]; !ok {
+			vocab[w] = len(vocab)
+		}
+	}
+	v := make([]float64, len(vocab))
