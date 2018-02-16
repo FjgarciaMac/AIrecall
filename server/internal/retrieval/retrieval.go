@@ -99,3 +99,13 @@ func vector(query, content string) []float64 {
 		}
 	}
 	v := make([]float64, len(vocab))
+	for w, n := range q {
+		if i, ok := vocab[w]; ok {
+			v[i] = float64(n)
+		}
+	}
+	return v
+}
+
+func cosineSimilarity(query, content string) float64 {
+	q := tokens(query)
