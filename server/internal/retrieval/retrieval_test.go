@@ -12,3 +12,8 @@ func TestKeywordScoreExact(t *testing.T) {
 
 func TestKeywordScorePartial(t *testing.T) {
 	s := NewScorer()
+	sc := s.Score("refund policy for orders", "refund window is 30 days", "keyword")
+	if sc <= 0 || sc >= 1 {
+		t.Fatalf("expected partial score, got %f", sc)
+	}
+}
