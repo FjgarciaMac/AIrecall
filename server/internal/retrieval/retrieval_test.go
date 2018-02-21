@@ -8,3 +8,7 @@ func TestKeywordScoreExact(t *testing.T) {
 	if sc != 1.0 {
 		t.Fatalf("expected 1.0, got %f", sc)
 	}
+}
+
+func TestKeywordScorePartial(t *testing.T) {
+	s := NewScorer()
