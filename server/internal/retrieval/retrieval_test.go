@@ -17,3 +17,7 @@ func TestKeywordScorePartial(t *testing.T) {
 		t.Fatalf("expected partial score, got %f", sc)
 	}
 }
+
+func TestHybridRanks(t *testing.T) {
+	s := NewScorer()
+	memories := []Memory{
