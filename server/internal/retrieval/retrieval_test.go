@@ -21,3 +21,8 @@ func TestKeywordScorePartial(t *testing.T) {
 func TestHybridRanks(t *testing.T) {
 	s := NewScorer()
 	memories := []Memory{
+		{Content: "unrelated note about weather"},
+		{Content: "user prefers email over phone"},
+		{Content: "told user about refund policy yesterday"},
+		{Content: "refund policy applies within 30 days"},
+	}
