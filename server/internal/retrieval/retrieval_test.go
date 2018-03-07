@@ -26,3 +26,7 @@ func TestHybridRanks(t *testing.T) {
 		{Content: "told user about refund policy yesterday"},
 		{Content: "refund policy applies within 30 days"},
 	}
+	hits := s.Hybrid("refund policy", memories, 2, "hybrid")
+	if len(hits) != 2 {
+		t.Fatalf("expected 2 hits, got %d", len(hits))
+	}
