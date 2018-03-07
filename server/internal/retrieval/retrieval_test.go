@@ -35,3 +35,7 @@ func TestHybridRanks(t *testing.T) {
 	}
 	if hits[1] != memories[2].Content {
 		t.Fatalf("expected second relevant, got %q", hits[1])
+	}
+}
+
+func TestVectorMode(t *testing.T) {
