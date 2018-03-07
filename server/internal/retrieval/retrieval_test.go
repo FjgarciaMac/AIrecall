@@ -39,3 +39,8 @@ func TestHybridRanks(t *testing.T) {
 }
 
 func TestVectorMode(t *testing.T) {
+	s := NewScorer()
+	sc := s.Score("email contact", "prefers email contact", "vector")
+	if sc <= 0 {
+		t.Fatalf("expected vector similarity > 0, got %f", sc)
+	}
