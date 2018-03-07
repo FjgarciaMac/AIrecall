@@ -30,3 +30,8 @@ func TestHybridRanks(t *testing.T) {
 	if len(hits) != 2 {
 		t.Fatalf("expected 2 hits, got %d", len(hits))
 	}
+	if hits[0] != memories[3].Content {
+		t.Fatalf("expected most relevant first, got %q", hits[0])
+	}
+	if hits[1] != memories[2].Content {
+		t.Fatalf("expected second relevant, got %q", hits[1])
