@@ -6,3 +6,8 @@ package main
 
 import (
 	"flag"
+	"log"
+	"net/http"
+	"os"
+
+	"github.com/FjgarciaMac/AIrecall/server/internal/api"
