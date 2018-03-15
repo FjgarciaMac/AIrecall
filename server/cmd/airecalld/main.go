@@ -21,3 +21,8 @@ func main() {
 	)
 	flag.Parse()
 
+	store, err := storage.Open(*db)
+	if err != nil {
+		log.Fatalf("airecalld: storage: %v", err)
+	}
+	defer store.Close()
