@@ -11,3 +11,8 @@ import (
 	"os"
 
 	"github.com/FjgarciaMac/AIrecall/server/internal/api"
+	"github.com/FjgarciaMac/AIrecall/server/internal/storage"
+)
+
+func main() {
+	var (
