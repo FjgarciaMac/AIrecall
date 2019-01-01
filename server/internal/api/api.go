@@ -29,3 +29,17 @@ type Server struct {
 	summarizer *summarizer.Summarizer
 	cfg        Config
 }
+
+// New builds the handler mux.
+func New(store *storage.Store, cfg Config) http.Handler {
+	s := &Server{
+		store:      store,
+		scorer:     retrieval.NewScorer(),
+		summarizer: summarizer.New(store),
+		cfg:        cfg,
+	}
+	mux := http.NewServeMux()
+	mux.HandleFunc("POST /v1/remember", s.handleRemember)
+	mux.HandleFunc("POST /v1/facts", s.handleUpsertFact)
+	mux.HandleFunc("POST /v1/recall", s.handleRecall)
+	mux.HandleFunc("GET /v1/facts/{agent}/{key}", s.handleGetFact)
