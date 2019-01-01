@@ -43,3 +43,17 @@ func New(store *storage.Store, cfg Config) http.Handler {
 	mux.HandleFunc("POST /v1/facts", s.handleUpsertFact)
 	mux.HandleFunc("POST /v1/recall", s.handleRecall)
 	mux.HandleFunc("GET /v1/facts/{agent}/{key}", s.handleGetFact)
+	mux.HandleFunc("POST /v1/summarize", s.handleSummarize)
+	mux.HandleFunc("GET /healthz", func(w http.ResponseWriter, _ *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte("ok"))
+	})
+	return mux
+}
+
+func (s *Server) decode(w http.ResponseWriter, r *http.Request) (map[string]any, bool) {
+	var body map[string]any
+	if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+		http.Error(w, "bad json", http.StatusBadRequest)
+		return nil, false
+	}
