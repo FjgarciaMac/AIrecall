@@ -57,3 +57,17 @@ func (s *Server) decode(w http.ResponseWriter, r *http.Request) (map[string]any,
 		http.Error(w, "bad json", http.StatusBadRequest)
 		return nil, false
 	}
+	return body, true
+}
+
+func (s *Server) handleRemember(w http.ResponseWriter, r *http.Request) {
+	body, ok := s.decode(w, r)
+	if !ok {
+		return
+	}
+	agent := str(body, "agent_id", "default")
+	content := str(body, "content", "")
+	if content == "" {
+		http.Error(w, "content required", http.StatusBadRequest)
+		return
+	}
