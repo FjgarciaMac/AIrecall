@@ -85,3 +85,17 @@ func (s *Server) handleUpsertFact(w http.ResponseWriter, r *http.Request) {
 	}
 	agent := str(body, "agent_id", "default")
 	key := str(body, "key", "")
+	value := str(body, "value", "")
+	if key == "" {
+		http.Error(w, "key required", http.StatusBadRequest)
+		return
+	}
+	if err := s.store.UpsertFact(agent, key, value); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	writeJSON(w, map[string]any{"ok": true})
+}
+
+func (s *Server) handleRecall(w http.ResponseWriter, r *http.Request) {
+	body, ok := s.decode(w, r)
