@@ -99,3 +99,17 @@ func (s *Server) handleUpsertFact(w http.ResponseWriter, r *http.Request) {
 
 func (s *Server) handleRecall(w http.ResponseWriter, r *http.Request) {
 	body, ok := s.decode(w, r)
+	if !ok {
+		return
+	}
+	agent := str(body, "agent_id", "default")
+	query := str(body, "query", "")
+	topK := intF(body, "top_k", float64(s.cfg.TopK))
+	if topK <= 0 {
+		topK = s.cfg.TopK
+	}
+	episodes, err := s.store.RecentEpisodes(agent, s.cfg.RecallLimit)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
