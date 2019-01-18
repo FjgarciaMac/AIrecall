@@ -113,3 +113,18 @@ func (s *Server) handleRecall(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	memories := make([]retrieval.Memory, 0, len(episodes))
+	for _, e := range episodes {
+		memories = append(memories, retrieval.Memory{Content: e.Content})
+	}
+	hits := s.scorer.Hybrid(query, memories, topK, s.cfg.Mode)
+	writeJSON(w, map[string]any{"memories": hits})
+}
+
+func (s *Server) handleGetFact(w http.ResponseWriter, r *http.Request) {
+	agent := r.PathValue("agent")
+	key := r.PathValue("key")
+	value, ok, err := s.store.Fact(agent, key)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
