@@ -128,3 +128,17 @@ func (s *Server) handleGetFact(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
+	}
+	if !ok {
+		http.Error(w, "not found", http.StatusNotFound)
+		return
+	}
+	writeJSON(w, map[string]any{"key": key, "value": value})
+}
+
+func (s *Server) handleSummarize(w http.ResponseWriter, r *http.Request) {
+	body, ok := s.decode(w, r)
+	if !ok {
+		return
+	}
+	agent := str(body, "agent_id", "default")
