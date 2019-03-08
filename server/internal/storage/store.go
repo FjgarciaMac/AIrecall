@@ -97,3 +97,18 @@ func (s *Store) RecentEpisodes(agentID string, limit int) ([]Episode, error) {
 	defer rows.Close()
 	var out []Episode
 	for rows.Next() {
+		var e Episode
+		if err := rows.Scan(&e.ID, &e.Content); err != nil {
+			return nil, err
+		}
+		out = append(out, e)
+	}
+	return out, rows.Err()
+}
+
+// CountEpisodes counts the episodes stored for one agent.
+func (s *Store) CountEpisodes(agentID string) (int, error) {
+	var n int
+	err := s.DB.QueryRow(
+		"SELECT COUNT(*) FROM episodes WHERE agent_id = ?", agentID).Scan(&n)
+	return n, err
