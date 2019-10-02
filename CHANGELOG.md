@@ -44,4 +44,4 @@ adheres to [Semantic Versioning](https://semver.org/).
 ### Added
 - Project scaffold and design notes
 
-<!-- draft note 417 -->
+<!-- draft note 418 -->
