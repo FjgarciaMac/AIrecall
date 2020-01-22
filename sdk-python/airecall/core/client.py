@@ -10,3 +10,9 @@ A thin HTTP client. The server exposes a small JSON API:
 """
 
 from __future__ import annotations
+
+import json
+from typing import Optional
+
+import requests
+
