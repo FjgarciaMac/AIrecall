@@ -23,3 +23,9 @@ class MemoryClient:
         self.agent_id = agent_id
         self.timeout = timeout
 
+    def _post(self, path: str, payload: dict) -> dict:
+        r = requests.post(f"{self.base_url}{path}", json=payload,
+                          timeout=self.timeout)
+        r.raise_for_status()
+        return r.json()
+
