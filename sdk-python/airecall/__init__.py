@@ -3,3 +3,5 @@
 Episodic + semantic memory, hybrid retrieval, and auto-summarization.
 """
 
+from airecall.core.memory import Memory
+
