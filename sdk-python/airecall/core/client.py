@@ -16,3 +16,10 @@ from typing import Optional
 
 import requests
 
+
+class MemoryClient:
+    def __init__(self, base_url: str, agent_id: str, timeout: float = 10.0):
+        self.base_url = base_url.rstrip("/")
+        self.agent_id = agent_id
+        self.timeout = timeout
+
