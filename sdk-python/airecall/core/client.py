@@ -36,3 +36,9 @@ class MemoryClient:
         self._post("/v1/facts", {"agent_id": self.agent_id, "key": key,
                                  "value": value})
 
+    def recall(self, query: str, top_k: int = 5) -> list[str]:
+        data = self._post("/v1/recall", {"agent_id": self.agent_id,
+                                         "query": query, "top_k": top_k})
+        return data.get("memories", [])
+
+    def recall_fact(self, key: str) -> Optional[str]:
