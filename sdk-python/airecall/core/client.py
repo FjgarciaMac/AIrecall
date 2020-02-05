@@ -29,3 +29,10 @@ class MemoryClient:
         r.raise_for_status()
         return r.json()
 
+    def remember(self, content: str) -> None:
+        self._post("/v1/remember", {"agent_id": self.agent_id, "content": content})
+
+    def remember_fact(self, key: str, value: str) -> None:
+        self._post("/v1/facts", {"agent_id": self.agent_id, "key": key,
+                                 "value": value})
+
