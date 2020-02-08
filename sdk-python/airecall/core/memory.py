@@ -38,3 +38,15 @@ class Memory:
 
     def __init__(self, agent_id: str = "default",
                  db_path: str = "airecall.db",
+                 server_url: Optional[str] = None):
+        self.agent_id = agent_id
+        self.db_path = db_path
+        if server_url:
+            self._client = MemoryClient(server_url, agent_id)
+            self._server = True
+        else:
+            self._client = None
+            self._server = False
+            self._conn = sqlite3.connect(db_path)
+            self._init_schema()
+
