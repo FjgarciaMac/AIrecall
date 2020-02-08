@@ -13,3 +13,15 @@ import sqlite3
 import uuid
 from datetime import datetime, timezone
 from typing import Optional
+
+from airecall.core.client import MemoryClient
+
+
+def _now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+class Memory:
+    """Agent-facing memory facade.
+
+    Parameters
