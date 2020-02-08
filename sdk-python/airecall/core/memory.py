@@ -63,3 +63,16 @@ class Memory:
                 id         INTEGER PRIMARY KEY AUTOINCREMENT,
                 agent_id   TEXT NOT NULL,
                 key        TEXT NOT NULL,
+                value      TEXT NOT NULL,
+                updated_at TEXT NOT NULL,
+                UNIQUE(agent_id, key)
+            );
+            CREATE INDEX IF NOT EXISTS idx_episodes_agent
+                ON episodes(agent_id, created_at);
+        """)
+        self._conn.commit()
+
+    def remember(self, content: str) -> None:
+        """Store an episodic memory."""
+        if self._server:
+            self._client.remember(content)
