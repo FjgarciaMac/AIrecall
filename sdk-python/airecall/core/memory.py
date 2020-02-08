@@ -50,3 +50,16 @@ class Memory:
             self._conn = sqlite3.connect(db_path)
             self._init_schema()
 
+    def _init_schema(self) -> None:
+        self._conn.executescript("""
+            CREATE TABLE IF NOT EXISTS episodes (
+                id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                agent_id   TEXT NOT NULL,
+                content    TEXT NOT NULL,
+                kind       TEXT NOT NULL DEFAULT 'episode',
+                created_at TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS facts (
+                id         INTEGER PRIMARY KEY AUTOINCREMENT,
+                agent_id   TEXT NOT NULL,
+                key        TEXT NOT NULL,
