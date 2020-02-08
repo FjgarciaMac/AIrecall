@@ -25,3 +25,16 @@ class Memory:
     """Agent-facing memory facade.
 
     Parameters
+    ----------
+    agent_id:
+        Namespace for this agent's memories. Different agents never see
+        each other's episodes.
+    db_path:
+        SQLite file used by the in-process store (dev mode).
+    server_url:
+        When set, all operations go to the AIrecall memory server
+        instead of the local store.
+    """
+
+    def __init__(self, agent_id: str = "default",
+                 db_path: str = "airecall.db",
