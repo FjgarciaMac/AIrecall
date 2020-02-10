@@ -76,3 +76,15 @@ class Memory:
         """Store an episodic memory."""
         if self._server:
             self._client.remember(content)
+            return
+        self._conn.execute(
+            "INSERT INTO episodes (agent_id, content, created_at) VALUES (?, ?, ?)",
+            (self.agent_id, content, _now()))
+        self._conn.commit()
+
+    def remember_fact(self, key: str, value: str) -> None:
+        """Store (or update) a durable semantic fact."""
+        if self._server:
+            self._client.remember_fact(key, value)
+            return
+        self._conn.execute(
