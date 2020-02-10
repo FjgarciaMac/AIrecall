@@ -88,3 +88,16 @@ class Memory:
             self._client.remember_fact(key, value)
             return
         self._conn.execute(
+            "INSERT INTO facts (agent_id, key, value, updated_at) VALUES (?, ?, ?, ?) "
+            "ON CONFLICT(agent_id, key) DO UPDATE SET value=excluded.value, "
+            "updated_at=excluded.updated_at",
+            (self.agent_id, key, value, _now()))
+        self._conn.commit()
+
+    def recall(self, query: str, top_k: int = 5) -> list[str]:
+        """Return the most relevant memories for the current turn.
+
+        Hybrid retrieval: BM25-style keyword scoring combined with a
+        simple cosine similarity over word-overlap vectors. The server
+        runs the same algorithm in Go so results agree between modes.
+        """
