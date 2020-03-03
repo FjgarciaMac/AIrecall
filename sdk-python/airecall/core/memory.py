@@ -101,3 +101,15 @@ class Memory:
         simple cosine similarity over word-overlap vectors. The server
         runs the same algorithm in Go so results agree between modes.
         """
+        if self._server:
+            return self._client.recall(query, top_k)
+        rows = self._conn.execute(
+            "SELECT content FROM episodes WHERE agent_id=? ORDER BY created_at DESC "
+            "LIMIT 200", (self.agent_id,)).fetchall()
+        if not rows:
+            return []
+        scored = []
+        for (content,) in rows:
+            scored.append((self._score(query, content), content))
+        scored.sort(key=lambda x: -x[0])
+        return [c for s, c in scored[:top_k] if s > 0]
