@@ -113,3 +113,16 @@ class Memory:
             scored.append((self._score(query, content), content))
         scored.sort(key=lambda x: -x[0])
         return [c for s, c in scored[:top_k] if s > 0]
+
+    def recall_fact(self, key: str) -> Optional[str]:
+        """Return a semantic fact by key."""
+        if self._server:
+            return self._client.recall_fact(key)
+        row = self._conn.execute(
+            "SELECT value FROM facts WHERE agent_id=? AND key=?",
+            (self.agent_id, key)).fetchone()
+        return row[0] if row else None
+
+    def summarize(self) -> dict:
+        """Trigger a summarization pass (server mode only in production;
+        dev mode returns a no-op summary)."""
