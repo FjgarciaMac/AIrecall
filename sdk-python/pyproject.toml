@@ -10,3 +10,7 @@ requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "AIrecall contributors" }]
 dependencies = ["requests>=2.28"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+langchain = ["langchain-core>=0.2"]
