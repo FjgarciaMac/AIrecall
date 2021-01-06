@@ -16,3 +16,8 @@ from airecall.core.memory import Memory
 
 class AirecallRetriever(BaseRetriever):  # type: ignore[misc]
     """Retriever that reads memories from an AIrecall store.
+
+    Plug it into any LangChain chain:
+
+        retriever = AirecallRetriever(Memory(agent_id="support"))
+        docs = retriever.invoke("refund policy")
