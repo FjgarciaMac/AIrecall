@@ -26,3 +26,7 @@ class AirecallRetriever(BaseRetriever):  # type: ignore[misc]
     def __init__(self, memory: Memory, top_k: int = 5, **kwargs: Any) -> None:
         if BaseRetriever is not object:
             super().__init__(**kwargs)
+        self.memory = memory
+        self.top_k = top_k
+
+    def _get_relevant_documents(
