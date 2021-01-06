@@ -11,3 +11,8 @@ except ImportError:  # pragma: no cover
     Document = None  # type: ignore
     BaseRetriever = object  # type: ignore
 
+from airecall.core.memory import Memory
+
+
+class AirecallRetriever(BaseRetriever):  # type: ignore[misc]
+    """Retriever that reads memories from an AIrecall store.
