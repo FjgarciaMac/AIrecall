@@ -21,3 +21,8 @@ class AirecallRetriever(BaseRetriever):  # type: ignore[misc]
 
         retriever = AirecallRetriever(Memory(agent_id="support"))
         docs = retriever.invoke("refund policy")
+    """
+
+    def __init__(self, memory: Memory, top_k: int = 5, **kwargs: Any) -> None:
+        if BaseRetriever is not object:
+            super().__init__(**kwargs)
