@@ -19,3 +19,14 @@ def cmd_init(args) -> int:
     return 0
 
 
+def cmd_store(args) -> int:
+    memory = Memory(agent_id=args.agent, db_path=args.db,
+                    server_url=args.server)
+    memory.remember(" ".join(args.text))
+    print("stored")
+    return 0
+
+
+def cmd_recall(args) -> int:
+    memory = Memory(agent_id=args.agent, db_path=args.db,
+                    server_url=args.server)
