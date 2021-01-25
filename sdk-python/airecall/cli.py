@@ -40,3 +40,14 @@ def cmd_fact(args) -> int:
     memory = Memory(agent_id=args.agent, db_path=args.db,
                     server_url=args.server)
     if args.value is None:
+        value = memory.recall_fact(args.key)
+        if value is None:
+            print("(no such fact)")
+            return 1
+        print(value)
+        return 0
+    memory.remember_fact(args.key, args.value)
+    print("stored")
+    return 0
+
+
