@@ -30,3 +30,13 @@ def cmd_store(args) -> int:
 def cmd_recall(args) -> int:
     memory = Memory(agent_id=args.agent, db_path=args.db,
                     server_url=args.server)
+    hits = memory.recall(" ".join(args.query), top_k=args.top_k)
+    for hit in hits:
+        print(f"- {hit}")
+    return 0
+
+
+def cmd_fact(args) -> int:
+    memory = Memory(agent_id=args.agent, db_path=args.db,
+                    server_url=args.server)
+    if args.value is None:
