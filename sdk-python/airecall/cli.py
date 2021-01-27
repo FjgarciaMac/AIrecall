@@ -51,3 +51,14 @@ def cmd_fact(args) -> int:
     return 0
 
 
+def cmd_summarize(args) -> int:
+    memory = Memory(agent_id=args.agent, db_path=args.db,
+                    server_url=args.server)
+    result = memory.summarize()
+    print(f"scanned {result.get('episodes', 0)} episodes")
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="airecall",
