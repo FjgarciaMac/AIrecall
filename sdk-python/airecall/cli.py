@@ -62,3 +62,14 @@ def cmd_summarize(args) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="airecall",
+        description="Manage AIrecall agent memories from the terminal.")
+    parser.add_argument("--agent", default="default",
+                        help="agent id (default: default)")
+    parser.add_argument("--db", default=None,
+                        help="path to the local SQLite store")
+    parser.add_argument("--server", default=None,
+                        help="base URL of a running airecalld server")
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    p_init = sub.add_parser("init", help="create the local store")
+    p_init.set_defaults(func=cmd_init)
