@@ -73,3 +73,13 @@ def build_parser() -> argparse.ArgumentParser:
 
     p_init = sub.add_parser("init", help="create the local store")
     p_init.set_defaults(func=cmd_init)
+
+    p_store = sub.add_parser("store", help="store one episode")
+    p_store.add_argument("text", nargs="+")
+    p_store.set_defaults(func=cmd_store)
+
+    p_recall = sub.add_parser("recall", help="search memories")
+    p_recall.add_argument("query", nargs="+")
+    p_recall.add_argument("--top-k", type=int, default=5)
+    p_recall.set_defaults(func=cmd_recall)
+
