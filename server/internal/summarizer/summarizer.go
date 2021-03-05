@@ -56,3 +56,14 @@ func splitFact(text string) []string {
 	if m == "" {
 		return nil
 	}
+	m = strings.TrimSpace(m)
+	for _, sep := range []string{":", "=", " is ", " "} {
+		if i := strings.Index(m, sep); i > 0 {
+			key := strings.TrimSpace(m[:i])
+			val := strings.TrimSpace(m[i+len(sep):])
+			if key != "" && val != "" {
+				return []string{key, val}
+			}
+		}
+	}
+	return nil
