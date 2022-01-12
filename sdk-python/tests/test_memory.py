@@ -18,3 +18,10 @@ def memory(tmp_path):
 def test_remember_and_recall(memory):
     memory.remember("User asked about refund policy for ORD-9921")
     memory.remember("User prefers email over phone")
+    hits = memory.recall("refund policy")
+    assert any("refund" in h for h in hits)
+
+
+def test_recall_empty(memory):
+    assert memory.recall("anything") == []
+
