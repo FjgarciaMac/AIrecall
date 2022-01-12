@@ -33,3 +33,10 @@ def test_facts_upsert(memory):
     assert memory.recall_fact("preferred_contact") == "phone"
 
 
+def test_agents_isolated(tmp_path):
+    a = Memory(agent_id="a", db_path=str(tmp_path / "x.db"))
+    b = Memory(agent_id="b", db_path=str(tmp_path / "x.db"))
+    a.remember("secret for agent a")
+    assert b.recall("secret") == []
+    a.close()
+    b.close()
