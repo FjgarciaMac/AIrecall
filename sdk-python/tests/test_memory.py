@@ -25,3 +25,11 @@ def test_remember_and_recall(memory):
 def test_recall_empty(memory):
     assert memory.recall("anything") == []
 
+
+def test_facts_upsert(memory):
+    memory.remember_fact("preferred_contact", "email")
+    assert memory.recall_fact("preferred_contact") == "email"
+    memory.remember_fact("preferred_contact", "phone")
+    assert memory.recall_fact("preferred_contact") == "phone"
+
+
