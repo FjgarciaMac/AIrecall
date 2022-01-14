@@ -40,3 +40,10 @@ def test_agents_isolated(tmp_path):
     assert b.recall("secret") == []
     a.close()
     b.close()
+
+
+def test_top_k_limits(memory):
+    for i in range(10):
+        memory.remember(f"keyword unique-{i} memory")
+    hits = memory.recall("keyword", top_k=3)
+    assert len(hits) == 3
