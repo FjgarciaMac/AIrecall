@@ -10,3 +10,5 @@ contract; nothing else matters.
       |  python SDK (airecall/core/memory.py)
       v
   +--------------------------------------------+
+  |  airecall.db  (SQLite)                     |
+  |  episodes  (episodic memory)               |
