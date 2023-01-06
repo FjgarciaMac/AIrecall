@@ -5,3 +5,5 @@ contract; nothing else matters.
 
 ## Components
 
+```
+  agent code
