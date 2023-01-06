@@ -7,3 +7,6 @@ contract; nothing else matters.
 
 ```
   agent code
+      |  python SDK (airecall/core/memory.py)
+      v
+  +--------------------------------------------+
