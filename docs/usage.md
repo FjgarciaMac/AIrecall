@@ -6,3 +6,8 @@ Practical walkthroughs for AIrecall.
 
 ```python
 from airecall import Memory
+
+memory = Memory(agent_id="support-bot")
+memory.remember("User asked about refund policy for ORD-9921")
+memory.remember_fact("preferred_contact", "email")
+
