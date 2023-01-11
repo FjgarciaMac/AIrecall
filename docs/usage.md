@@ -21,3 +21,8 @@ for h in hits:
 ```bash
 airecall init
 airecall store "user prefers email over phone" --agent support-bot
+## Pinning facts across sessions
+
+When a user states a durable preference, promote it immediately instead of waiting for the summarizer:
+
+```python
