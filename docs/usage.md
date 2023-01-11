@@ -16,3 +16,8 @@ for h in hits:
     print("-", h)
 ```
 
+## Use the CLI
+
+```bash
+airecall init
+airecall store "user prefers email over phone" --agent support-bot
