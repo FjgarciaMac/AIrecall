@@ -10,3 +10,5 @@ what matters and remember what doesn't.
 |---|---|---|
 | `keyword` | BM25-style term overlap | exact terms, product names, ids |
 | `vector` | cosine over word-overlap vectors | paraphrase, synonyms |
+| `hybrid` | 0.65 keyword + 0.35 vector | default; most cases |
+
