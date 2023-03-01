@@ -126,3 +126,27 @@ class Memory:
     def summarize(self) -> dict:
         """Trigger a summarization pass (server mode only in production;
         dev mode returns a no-op summary)."""
+        if self._server:
+            return self._client.summarize()
+        n = self._conn.execute(
+            "SELECT COUNT(*) FROM episodes WHERE agent_id=?", (self.agent_id,)
+        ).fetchone()[0]
+        return {"episodes": n, "compacted": 0, "facts_promoted": 0}
+
+    @staticmethod
+    def _score(query: str, content: str) -> float:
+        q_words = set(w.lower() for w in query.split() if len(w) > 2)
+        if not q_words:
+            return 0.0
+        c_words = content.lower().split()
+        hits = sum(1 for w in q_words if w in c_words)
+        return hits / len(q_words)
+
+    def close(self) -> None:
+        if not self._server:
+            self._conn.close()
+
+    def __enter__(self) -> "Memory":
+        return self
+
+    def __exit__(self, *exc) -> None:
