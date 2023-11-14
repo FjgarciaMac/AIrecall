@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+build/
+
+# Go
+bin/
+*.test
+
+# Data
+*.db
+*.db-wal
+*.db-shm
+
+# Tooling
+.idea/
+.vscode/
+.DS_Store
