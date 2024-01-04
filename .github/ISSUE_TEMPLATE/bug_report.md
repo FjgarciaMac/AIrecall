@@ -6,3 +6,6 @@ labels: bug
 
 **What happened**
 
+<!-- describe the wrong behavior -->
+
+**Steps to reproduce**
