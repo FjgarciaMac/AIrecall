@@ -9,3 +9,6 @@ labels: bug
 <!-- describe the wrong behavior -->
 
 **Steps to reproduce**
+
+```
+# exact commands and the memory content involved
