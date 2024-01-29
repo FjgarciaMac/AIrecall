@@ -12,3 +12,7 @@ labels: bug
 
 ```
 # exact commands and the memory content involved
+```
+
+**Expected behavior**
+
