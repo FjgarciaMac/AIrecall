@@ -4,3 +4,4 @@
 
 ## Checklist
 
+- [ ] `cd sdk-python && pytest` green
