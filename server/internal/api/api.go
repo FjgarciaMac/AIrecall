@@ -142,3 +142,30 @@ func (s *Server) handleSummarize(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	agent := str(body, "agent_id", "default")
+	result, err := s.summarizer.Run(agent, s.cfg.RecallLimit)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	writeJSON(w, map[string]any{
+		"facts_promoted": result.FactsPromoted,
+	})
+}
+
+func str(m map[string]any, key, fallback string) string {
+	if v, ok := m[key].(string); ok && v != "" {
+		return v
+	}
+	return fallback
+}
+
+func intF(m map[string]any, key string, fallback float64) int {
+	if v, ok := m[key].(float64); ok {
+		return int(v)
+	}
+	return int(fallback)
+}
+
+func writeJSON(w http.ResponseWriter, v any) {
+	w.Header().Set("Content-Type", "application/json")
+	_ = json.NewEncoder(w).Encode(v)
