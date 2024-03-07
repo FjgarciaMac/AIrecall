@@ -14,3 +14,9 @@ jobs:
         working-directory: sdk-python
     strategy:
       matrix:
+        python-version: ["3.9", "3.12"]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
