@@ -26,3 +26,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
       - name: test
+        run: pytest -o addopts=""
+
+  server:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
