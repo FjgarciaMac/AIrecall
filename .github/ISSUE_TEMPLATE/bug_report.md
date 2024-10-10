@@ -16,3 +16,8 @@ labels: bug
 
 **Expected behavior**
 
+**Environment**
+
+- airecall-sdk version (`pip show airecall-sdk`):
+- airecalld version / commit:
+- OS and Python/Go versions:
