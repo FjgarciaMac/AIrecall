@@ -4,3 +4,5 @@ A support agent that remembers users across sessions.
 
 ```python
 from langchain_core.tools import tool
+from airecall import Memory
+from airecall.adapters.langchain import MemoryRetriever
