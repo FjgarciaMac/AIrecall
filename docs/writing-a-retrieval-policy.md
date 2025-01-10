@@ -12,3 +12,8 @@ what matters and remember what doesn't.
 | `vector` | cosine over word-overlap vectors | paraphrase, synonyms |
 | `hybrid` | 0.65 keyword + 0.35 vector | default; most cases |
 
+## Rules of thumb
+
+- **Keep `top_k` small** (3-8). Memory injected into the prompt costs
+  tokens and dilutes attention; the top 3 relevant episodes beat 20
+
