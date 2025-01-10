@@ -12,3 +12,8 @@ contract; nothing else matters.
   +--------------------------------------------+
   |  airecall.db  (SQLite)                     |
   |  episodes  (episodic memory)               |
+  |  facts     (semantic memory)               |
+  +--------------------------------------------+
+      ^
+      |  JSON API (server/internal/api)
+
