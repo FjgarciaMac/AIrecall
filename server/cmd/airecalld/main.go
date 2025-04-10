@@ -26,3 +26,11 @@ func main() {
 		log.Fatalf("airecalld: storage: %v", err)
 	}
 	defer store.Close()
+
+	handler := api.New(store, api.DefaultConfig())
+	log.Printf("airecalld: listening on %s (db=%s)", *addr, *db)
+	if err := http.ListenAndServe(*addr, handler); err != nil {
+		log.Fatalf("airecalld: serve: %v", err)
+	}
+	_ = os.Getpid
+}
