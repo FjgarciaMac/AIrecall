@@ -83,3 +83,23 @@ def build_parser() -> argparse.ArgumentParser:
     p_recall.add_argument("--top-k", type=int, default=5)
     p_recall.set_defaults(func=cmd_recall)
 
+    p_fact = sub.add_parser("fact", help="read or write a semantic fact")
+    p_fact.add_argument("key")
+    p_fact.add_argument("value", nargs="?", default=None)
+    p_fact.set_defaults(func=cmd_fact)
+
+    p_sum = sub.add_parser("summarize", help="run the distillation pass")
+    p_sum.set_defaults(func=cmd_summarize)
+
+    return parser
+
+
+def main(argv: Optional[list] = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
