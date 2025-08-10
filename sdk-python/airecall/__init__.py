@@ -5,3 +5,5 @@ Episodic + semantic memory, hybrid retrieval, and auto-summarization.
 
 from airecall.core.memory import Memory
 
+__version__ = "0.4.0"
+__all__ = ["Memory"]
