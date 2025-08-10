@@ -30,3 +30,12 @@ class AirecallRetriever(BaseRetriever):  # type: ignore[misc]
         self.top_k = top_k
 
     def _get_relevant_documents(
+        self, query: str, *, run_manager: Optional[Any] = None
+    ) -> List[Any]:
+        hits = self.memory.recall(query, top_k=self.top_k)
+        if Document is None:
+            return hits
+        return [
+            Document(page_content=hit, metadata={"source": "airecall"})
+            for hit in hits
+        ]
