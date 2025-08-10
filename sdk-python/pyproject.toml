@@ -17,3 +17,9 @@ langchain = ["langchain-core>=0.2"]
 
 [project.scripts]
 airecall = "airecall.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["airecall*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
