@@ -67,3 +67,4 @@ func splitFact(text string) []string {
 		}
 	}
 	return nil
+}
