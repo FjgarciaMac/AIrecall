@@ -44,3 +44,12 @@ func TestRunPromotesFacts(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	if res.Scanned != 2 || res.FactsPromoted != 1 {
+		t.Fatalf("result = %+v", res)
+	}
+	v, ok, _ := store.Fact("a", "timezone")
+	if !ok || v != "UTC" {
+		t.Fatalf("fact = %q ok=%v", v, ok)
+	}
+	_ = os.Remove(path)
+}
