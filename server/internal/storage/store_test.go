@@ -47,3 +47,11 @@ func TestAgentsIsolated(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer store.Close()
+	_ = store.AddEpisode("a", "secret")
+	eps, _ := store.RecentEpisodes("b", 10)
+	if len(eps) != 0 {
+		t.Fatal("agents not isolated")
+	}
+	_ = os.Remove(path)
+}
