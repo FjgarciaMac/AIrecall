@@ -112,3 +112,4 @@ func (s *Store) CountEpisodes(agentID string) (int, error) {
 	err := s.DB.QueryRow(
 		"SELECT COUNT(*) FROM episodes WHERE agent_id = ?", agentID).Scan(&n)
 	return n, err
+}
