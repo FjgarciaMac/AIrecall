@@ -44,3 +44,13 @@ func TestVectorMode(t *testing.T) {
 	if sc <= 0 {
 		t.Fatalf("expected vector similarity > 0, got %f", sc)
 	}
+}
+
+func TestStopwordsIgnored(t *testing.T) {
+	s := NewScorer()
+	sc := s.Score("a b the", "nothing matches here", "keyword")
+	if sc != 0 {
+		t.Fatalf("stopwords should score 0, got %f", sc)
+	}
+}
+// draft note 1384
