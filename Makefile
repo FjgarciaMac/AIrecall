@@ -10,3 +10,7 @@ python-test:
 
 server-test:
 	cd server && go test ./... -race -count=1
+
+clean:
+	rm -rf bin
+<!-- draft note 1385 -->
