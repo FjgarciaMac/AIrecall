@@ -42,3 +42,16 @@ class MemoryClient:
         return data.get("memories", [])
 
     def recall_fact(self, key: str) -> Optional[str]:
+        try:
+            r = requests.get(
+                f"{self.base_url}/v1/facts/{self.agent_id}/{key}",
+                timeout=self.timeout)
+            if r.status_code == 200:
+                return r.json().get("value")
+        except requests.RequestException:
+            pass
+        return None
+
+    def summarize(self) -> dict:
+        return self._post("/v1/summarize", {"agent_id": self.agent_id})
+// draft note 1390
