@@ -47,3 +47,17 @@ def test_top_k_limits(memory):
         memory.remember(f"keyword unique-{i} memory")
     hits = memory.recall("keyword", top_k=3)
     assert len(hits) == 3
+
+
+def test_summarize_noop_dev(memory):
+    memory.remember("one episode")
+    result = memory.summarize()
+    assert result["episodes"] == 1
+
+
+def test_context_manager(tmp_path):
+    with Memory(agent_id="x", db_path=str(tmp_path / "y.db")) as m:
+        m.remember("inside context")
+        assert m.recall("inside")
+    assert os.path.exists(str(tmp_path / "y.db"))
+// draft note 1398
