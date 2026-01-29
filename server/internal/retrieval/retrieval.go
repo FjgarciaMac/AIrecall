@@ -109,3 +109,26 @@ func vector(query, content string) []float64 {
 
 func cosineSimilarity(query, content string) float64 {
 	q := tokens(query)
+	c := tokens(content)
+	if len(q) == 0 || len(c) == 0 {
+		return 0
+	}
+	dot, nq, nc := 0.0, 0.0, 0.0
+	for w, n := range q {
+		ncnt, ok := c[w]
+		_ = ncnt
+		if ok {
+			dot += float64(n * c[w])
+		}
+		nq += float64(n * n)
+	}
+	for _, n := range c {
+		nc += float64(n * n)
+	}
+	if nq == 0 || nc == 0 {
+		return 0
+	}
+	return dot / (math.Sqrt(nq) * math.Sqrt(nc))
+}
+
+// draft note 1400
