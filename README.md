@@ -101,3 +101,21 @@ memory.remember(
 # Later, in a new session
 context = memory.recall("what did we tell this user about refunds?")
 # -> returns the relevant episodic memory, ranked by relevance
+
+# Promote a durable fact explicitly
+memory.remember_fact(key="preferred_contact", value="email, not phone")
+```
+
+Framework adapters:
+
+```python
+from airecall.adapters.langchain import MemoryRetriever
+
+retriever = MemoryRetriever(memory)
+
+## Troubleshooting
+
+- **`RecallTimeout` on first query** - the index is still warming. Retry after the health endpoint reports `status: ready`.
+- **Missing memories after restart** - check the `storage.backend` path; a relative path resolves against the working directory of the server process.
+
+<!-- draft note 1401 -->
