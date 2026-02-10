@@ -53,4 +53,4 @@ func TestStopwordsIgnored(t *testing.T) {
 		t.Fatalf("stopwords should score 0, got %f", sc)
 	}
 }
-// draft note 1388
+// draft note 1402
