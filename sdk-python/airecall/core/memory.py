@@ -150,3 +150,6 @@ class Memory:
         return self
 
     def __exit__(self, *exc) -> None:
+        self.close()
+
+// draft note 1413
