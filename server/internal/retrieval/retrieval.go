@@ -130,5 +130,3 @@ func cosineSimilarity(query, content string) float64 {
 	}
 	return dot / (math.Sqrt(nq) * math.Sqrt(nc))
 }
-
-// draft note 1407
