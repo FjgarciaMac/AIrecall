@@ -60,4 +60,4 @@ def test_context_manager(tmp_path):
         m.remember("inside context")
         assert m.recall("inside")
     assert os.path.exists(str(tmp_path / "y.db"))
-// draft note 1416
+// draft note 1424
