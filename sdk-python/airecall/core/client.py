@@ -54,4 +54,4 @@ class MemoryClient:
 
     def summarize(self) -> dict:
         return self._post("/v1/summarize", {"agent_id": self.agent_id})
-// draft note 1429
+// draft note 1432
