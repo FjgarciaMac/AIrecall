@@ -116,6 +116,3 @@ retriever = MemoryRetriever(memory)
 ## Troubleshooting
 
 - **`RecallTimeout` on first query** - the index is still warming. Retry after the health endpoint reports `status: ready`.
-- **Missing memories after restart** - check the `storage.backend` path; a relative path resolves against the working directory of the server process.
-
-<!-- draft note 1431 -->
