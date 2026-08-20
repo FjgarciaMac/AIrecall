@@ -10,4 +10,3 @@ summarization:
   enabled: true
   run_every_hours: 24
   compact_after_days: 30
-// draft note 1457
