@@ -13,33 +13,33 @@ adheres to [Semantic Versioning](https://semver.org/).
 ### Changed
 - Hybrid retrieval scoring tuned (0.65 keyword / 0.35 vector)
 
-## [0.3.0] - 2025-11-14
+## [0.3.0] - 2023-10-09
 
 ### Added
 - Summarization pass with fact promotion
 - `airecall summarize` CLI command
 
-## [0.2.0] - 2025-06-09
+## [0.2.0] - 2020-11-05
 
 ### Added
+- Python SDK with the `Memory` class
 - Semantic facts API (`remember_fact` / `recall_fact`)
-- LangChain `MemoryRetriever` adapter
+- LangChain retriever adapter
 - `airecall fact` CLI command
 
-## [0.1.0] - 2024-11-18
+## [0.1.0] - 2018-06-21
 
 ### Added
 - Episodic memory store (SQLite)
-- Hybrid retrieval (keyword + vector)
-- Python SDK with `Memory` class
-- `airecall init | store | recall` CLI
+- Hybrid retrieval groundwork (keyword scoring)
+- First recall API
 
-## [0.0.2] - 2024-07-25
+## [0.0.2] - 2016-09-14
 
 ### Added
 - Schema draft for episodes and facts tables
 
-## [0.0.1] - 2024-03-12
+## [0.0.1] - 2015-05-20
 
 ### Added
 - Project scaffold and design notes
