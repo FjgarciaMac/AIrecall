@@ -75,10 +75,8 @@ compacts the rest.
 # Python SDK - what your agent code imports
 pip install airecall-sdk
 
-# Core memory server - runs locally or as a sidecar
-pip install airecall-sdk[server]
-# or run it standalone:
-airecall serve
+# Core memory server (Go) - build and run from source
+cd server && go build ./cmd/airecalld && ./airecalld
 ```
 
 `airecall init` scaffolds a local SQLite-backed store so you can start
