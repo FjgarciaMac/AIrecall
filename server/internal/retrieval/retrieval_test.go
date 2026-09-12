@@ -53,3 +53,12 @@ func TestStopwordsIgnored(t *testing.T) {
 		t.Fatalf("stopwords should score 0, got %f", sc)
 	}
 }
+
+func TestHybridNegativeTopKDoesNotPanic(t *testing.T) {
+	s := NewScorer()
+	memories := []Memory{{Content: "alpha beta"}, {Content: "gamma delta"}}
+	hits := s.Hybrid("alpha", memories, -1, "keyword")
+	if len(hits) != 0 {
+		t.Fatalf("negative topK should return no hits, got %d", len(hits))
+	}
+}

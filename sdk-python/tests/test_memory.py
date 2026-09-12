@@ -49,6 +49,11 @@ def test_top_k_limits(memory):
     assert len(hits) == 3
 
 
+def test_negative_top_k_is_empty(memory):
+    memory.remember("alpha beta")
+    assert memory.recall("alpha", top_k=-1) == []
+
+
 def test_summarize_noop_dev(memory):
     memory.remember("one episode")
     result = memory.summarize()

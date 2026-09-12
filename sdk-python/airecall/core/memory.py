@@ -101,6 +101,7 @@ class Memory:
         simple cosine similarity over word-overlap vectors. The server
         runs the same algorithm in Go so results agree between modes.
         """
+        top_k = max(0, int(top_k))
         if self._server:
             return self._client.recall(query, top_k)
         rows = self._conn.execute(
